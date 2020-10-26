@@ -16,7 +16,7 @@ Boot up a terminal & clone the project in the directory where you want it:
 `git clone https://github.com/Alismos/HeadsOrTailFlask.git`
 
 In the project directory, run the python App.py and be sure your database in xammp is ok 
-
+Use the MySQL file to create your database in MySQL.
 You're all set !
 
 ## Authors✒️
