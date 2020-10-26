@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {%for message in messages%} 
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+<h1>Welcome {{userinfo.1}} to Heads or Tails</h1>
+<h2>Please select an option and play!</h2>
+<form action="/logic/{{userinfo.0}}" method="POST">
+  <input class="btn btn-info" type="submit" value="Play">
+  <a class="btn btn-info" href="/delete/{{userinfo.0}}" role="button">Delete</a>
+  <a class="btn btn-info" href="/" role="button">Logout</a>
+
+  <select class="custom-select custom-select-lg" name="optionHuman">
+    <option value="-1">Select</option>
+    <option value="Heads">Heads</option>
+    <option value="Tails">Tails</option>
+    </select>
+
+</form>
+
+</div>
+<div class="col-md-7">
+  <table class="table table-striped table-bordered bg-white table-sm">
+      <thead>
+          <tr>
+              <td>Player</td>
+              <td>Computer</td>
+              <td>Winner</td>
+          </tr>
+      </thead>
+      <tbody>
+          {% for info in historygameusers  %}
+          <tr>
+              <td>{{info.2}}</td>
+              <td>{{info.3}}</td>
+              <td>{{info.4 }}</td>
+          </tr>
+          {%endfor%}
+      </tbody>
+  </table>
+</div>
+{% endblock %}
